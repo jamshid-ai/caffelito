@@ -1,0 +1,11 @@
+alembic==1.14.1
+asyncpg==0.30.0
+fastapi==0.115.8
+pydantic==2.10.6
+pydantic-settings==2.8.0
+python-dotenv==1.0.1
+SQLAlchemy==2.0.38
+uvicorn==0.29.0
+psycopg2-binary==2.9.10
+passlib==1.7.4
+python-jose==3.4.0
