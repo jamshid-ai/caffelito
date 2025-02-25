@@ -75,3 +75,13 @@ class OrderProduct(BaseModel):
 
     def __repr__(self):
         return f"<OrderProduct id={self.id} order_id={self.order_id} product_id={self.product_id}>"
+
+class Cart(BaseModel):
+    __tablename__ = "carts"
+
+    user_id: Mapped[int] = mapped_column(Integer, ForeignKey("users.id"), nullable=False)
+    user: Mapped["User"] = relationship(back_populates="cart")
+    products: Mapped[list["Product"]] = relationship(back_populates="cart")
+
+    def __repr__(self):
+        return f"<Cart id={self.id} user_id={self.user_id}>"
