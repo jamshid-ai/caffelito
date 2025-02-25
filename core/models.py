@@ -27,6 +27,8 @@ class User(BaseModel):
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
     is_verified: Mapped[bool] = mapped_column(Boolean, default=False)
     role: Mapped[str] = mapped_column(String, default="user")  # Possible roles: 'user', 'admin'
+    orders: Mapped[list["Order"]] = relationship(back_populates="user")
+    # cart: Mapped["Cart"] = relationship(back_populates="user")
 
     def __repr__(self):
         return f"<User id={self.id} email={self.email} username={self.username} role={self.role}>"
@@ -76,12 +78,12 @@ class OrderProduct(BaseModel):
     def __repr__(self):
         return f"<OrderProduct id={self.id} order_id={self.order_id} product_id={self.product_id}>"
 
-class Cart(BaseModel):
-    __tablename__ = "carts"
+# class Cart(BaseModel):
+#     __tablename__ = "carts"
 
-    user_id: Mapped[int] = mapped_column(Integer, ForeignKey("users.id"), nullable=False)
-    user: Mapped["User"] = relationship(back_populates="cart")
-    products: Mapped[list["Product"]] = relationship(back_populates="cart")
+#     user_id: Mapped[int] = mapped_column(Integer, ForeignKey("users.id"), nullable=False)
+#     user: Mapped["User"] = relationship(back_populates="cart")
+#     products: Mapped[list["Product"]] = relationship(back_populates="cart")
 
-    def __repr__(self):
-        return f"<Cart id={self.id} user_id={self.user_id}>"
+#     def __repr__(self):
+#         return f"<Cart id={self.id} user_id={self.user_id}>"

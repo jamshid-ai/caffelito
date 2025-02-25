@@ -5,13 +5,13 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 load_dotenv()
 
 class Settings(BaseSettings):
-    DB_HOST: str = os.getenv("DB_HOST", "db")
-    DB_PORT: str = os.getenv("DB_PORT", "5432")
-    DB_USER: str = os.getenv("DB_USER", "postgres")
-    DB_PASSWORD: str = os.getenv("DB_PASSWORD", "postgres")
-    DB_NAME: str = os.getenv("DB_NAME", "caffelito")
-    SECRET_KEY: str = os.getenv("SECRET_KEY", "caffelito_secret_key")
-    ALGORITHM: str = os.getenv("ALGORITHM", "HS256")
+    DB_HOST: str = "db"
+    DB_PORT: str = "5432"
+    DB_USER: str = "postgres"
+    DB_PASSWORD: str = "postgres"
+    DB_NAME: str = "caffelito"
+    SECRET_KEY: str = "caffelito_secret_key"
+    ALGORITHM: str = "HS256"
 
     @property
     def DATABASE_URL(self) -> str:
